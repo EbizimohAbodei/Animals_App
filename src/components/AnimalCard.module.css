@@ -14,11 +14,6 @@
   /* object-fit: top; */
 }
 
-.AnimalCard .card:hover {
-  box-shadow: 0 0 20px rgb(8, 1, 1);
-  border-radius: 5px 5px 5px 5px;
-}
-
 .AnimalCard:hover img {
   filter: saturate(1);
 }
@@ -27,7 +22,7 @@
   filter: saturate(1);
 }
 
-.AnimalCard:hover section {
+.AnimalCard:hover .likes_container {
   filter: saturate(1);
 }
 
@@ -45,7 +40,7 @@
   border: 3px;
 }
 
-.AnimalCard section {
+.likes_container {
   display: flex;
   flex-direction: row;
   background-color: cadetblue;
@@ -59,23 +54,41 @@
   margin-bottom: 0.5rem;
 }
 
+.remove {
+  background-color: rgb(196, 31, 31);
+  color: white;
+  position: relative;
+  top: 1.5rem;
+  left: 9.5rem;
+  height: 0.9rem;
+  z-index: 1;
+  filter: saturate(0) hue-rotate(90deg) sepia(10%);
+  border-radius: 3rem;
+  border: none;
+}
+
+.AnimalCard:hover .remove {
+  filter: saturate(1);
+  cursor: pointer;
+}
+
 .AnimalCard h4 {
   margin-left: 0.5rem;
 }
 
-.AnimalCard section span {
+.heartCount {
   display: flex;
   flex-direction: row;
   align-items: center;
 }
 
-.AnimalCard button {
+.like_button {
   padding: 0.3rem;
   background-color: whitesmoke;
   border-radius: 0.5rem;
   border: none;
 }
 
-.AnimalCard button:hover {
+.like_button:hover {
   cursor: pointer;
 }

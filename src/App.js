@@ -6,30 +6,41 @@ import AnimalCard from "./components/Card";
 import { animals } from "./animals";
 
 class App extends Component {
-  state = { animals };
+  state = { animals: animals };
   likeAnimal = (like) => {
-    const updatedArr = this.state.animals.map((animal) => {
+    const newArray = this.state.animals.map((animal) => {
       if (animal.name === like) {
-        animal.likes += 1;
+        return { ...animals, likes: (animal.likes += 1) };
       } else return animal;
     });
-    return this.setState(updatedArr);
+    return this.setState(newArray);
   };
+
+  remove = (name) => {
+    console.log(name);
+    const delArray = this.state.animals.filter(
+      (animal) => animal.name !== name
+    );
+    console.log(delArray);
+    this.setState({ animals: delArray });
+  };
+
   render() {
     return (
       <div className="App">
         <Header />
-        <main>
-          {animals.map((animal) => (
+        <div className="animalCard">
+          {this.state.animals.map((animal) => (
             <AnimalCard
               key={animal.name}
               imageSource={`http://source.unsplash.com/170x270/?animal/${animal.name}`}
               name={animal.name}
               like={animal.likes}
               handleLike={() => this.likeAnimal(animal.name)}
+              removeAnimal={() => this.remove(animal.name)}
             />
           ))}
-        </main>
+        </div>
         <Footer />
       </div>
     );

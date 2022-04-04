@@ -10,13 +10,31 @@ body {
 header {
   display: flex;
   background-color: cadetblue;
-  height: 4rem;
+  height: auto;
   align-items: center;
   padding: 0.3rem;
   justify-content: center;
+  flex-direction: column;
+  width: auto;
 }
 
-main {
+header h1 {
+  margin-top: 1rem;
+}
+
+header input {
+  margin: 3rem 0 1rem 0;
+  height: 2rem;
+  width: 30rem;
+  border-radius: 0.5rem;
+}
+
+::placeholder {
+  text-align: center;
+  font-size: 1rem;
+}
+
+.animalCard {
   padding: 1rem 1rem;
   width: auto;
   display: flex;
@@ -31,4 +49,6 @@ footer {
   height: 3rem;
   align-items: center;
   padding: 0.3rem;
+  position: relative;
+  bottom: 0;
 }
