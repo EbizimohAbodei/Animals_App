@@ -6,7 +6,7 @@ import AnimalCard from "./components/Card";
 import { animals } from "./animals";
 
 class App extends Component {
-  state = { animals: animals };
+  state = { animals: animals, search: " " };
   likeAnimal = (like) => {
     const newArray = this.state.animals.map((animal) => {
       if (animal.name === like) {
@@ -17,18 +17,34 @@ class App extends Component {
   };
 
   remove = (name) => {
-    console.log(name);
     const delArray = this.state.animals.filter(
       (animal) => animal.name !== name
     );
-    console.log(delArray);
     this.setState({ animals: delArray });
+  };
+
+  handleChange = (e) => {
+    this.setState({ search: e.target.value });
+    const filteredArr = this.state.animals.filter((animal) => {
+      if (animal.name.includes(e.target.value)) {
+        return animal;
+      }
+    });
+    this.setState({ animals: filteredArr });
   };
 
   render() {
     return (
       <div className="App">
         <Header />
+        <h3 className="numberOfAnimals">{this.state.animals.length} Animals</h3>
+        <div className="inputContainer">
+          <input
+            className="searchInput"
+            type="text"
+            onChange={this.handleChange}
+          ></input>
+        </div>
         <div className="animalCard">
           {this.state.animals.map((animal) => (
             <AnimalCard
